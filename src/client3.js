@@ -1,7 +1,9 @@
+const { Reading } = require('./reading');
 const { acquireReading } = require('./acquire-reading');
 const { baseRate } = require('./tax-utils');
 
-const aReading = acquireReading();
+const rawReading = acquireReading();
+const aReading = new Reading(rawReading);
 const basicChargeAmount = calculateBaseCharge(aReading);
 
 console.log(`basic charge amount is ${basicChargeAmount}`);
