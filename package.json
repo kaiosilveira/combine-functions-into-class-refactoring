@@ -1,0 +1,14 @@
+{
+  "name": "combine-functions-into-class",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/kaiosilveira/combine-functions-into-class-refactoring",
+  "author": "Kaio Silveira",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest --passWithNoTests"
+  },
+  "devDependencies": {
+    "jest": "^29.0.3"
+  }
+}
