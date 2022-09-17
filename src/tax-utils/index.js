@@ -25,4 +25,14 @@ function taxThreshold(year) {
   return THRESHOLDS_BY_YEAR[year];
 }
 
-module.exports = { baseRate, taxThreshold, RATES_BY_MONTH_AND_YEAR, THRESHOLDS_BY_YEAR };
+function taxableChargeFn(aReading) {
+  return Math.max(0, aReading.baseCharge - taxThreshold(aReading.year));
+}
+
+module.exports = {
+  baseRate,
+  taxThreshold,
+  taxableChargeFn,
+  RATES_BY_MONTH_AND_YEAR,
+  THRESHOLDS_BY_YEAR,
+};
