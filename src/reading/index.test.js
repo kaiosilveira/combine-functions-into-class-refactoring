@@ -28,12 +28,13 @@ describe('Reading', () => {
 
   describe('taxableCharge', () => {
     it('should calculate the correct taxable charge', () => {
-      jest.spyOn(TaxUtils, 'taxableChargeFn').mockReturnValue(0.5);
+      jest.spyOn(TaxUtils, 'taxThreshold').mockReturnValue(1);
+      jest.spyOn(TaxUtils, 'baseRate').mockReturnValue(1);
 
       const rawData = { customer: 'Ivan', quantity: 10, month: 5, year: 2017 };
       const reading = new Reading(rawData);
 
-      expect(reading.taxableCharge).toEqual(0.5);
+      expect(reading.taxableCharge).toEqual(9);
     });
   });
 });
