@@ -25,4 +25,15 @@ describe('Reading', () => {
       expect(reading.baseCharge).toEqual(mockedBaseRate * reading.quantity);
     });
   });
+
+  describe('taxableCharge', () => {
+    it('should calculate the correct taxable charge', () => {
+      jest.spyOn(TaxUtils, 'taxableChargeFn').mockReturnValue(0.5);
+
+      const rawData = { customer: 'Ivan', quantity: 10, month: 5, year: 2017 };
+      const reading = new Reading(rawData);
+
+      expect(reading.taxableCharge).toEqual(0.5);
+    });
+  });
 });

@@ -1,4 +1,4 @@
-const { baseRate } = require('../tax-utils');
+const { baseRate, taxableChargeFn } = require('../tax-utils');
 
 class Reading {
   constructor(data) {
@@ -26,6 +26,10 @@ class Reading {
 
   get baseCharge() {
     return baseRate(this.month, this.year) * this.quantity;
+  }
+
+  get taxableCharge() {
+    return taxableChargeFn(this);
   }
 }
 
