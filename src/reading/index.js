@@ -1,3 +1,5 @@
+const { baseRate } = require('../tax-utils');
+
 class Reading {
   constructor(data) {
     this._customer = data.customer;
@@ -20,6 +22,10 @@ class Reading {
 
   get year() {
     return this._year;
+  }
+
+  calculateBaseCharge() {
+    return baseRate(this.month, this.year) * this.quantity;
   }
 }
 

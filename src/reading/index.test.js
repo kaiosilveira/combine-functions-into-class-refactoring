@@ -1,4 +1,7 @@
+jest.mock('../tax-utils');
+
 const { Reading } = require('.');
+const TaxUtils = require('../tax-utils');
 
 describe('Reading', () => {
   it('should provide getters for quantity, customer, month and year', () => {
@@ -9,5 +12,17 @@ describe('Reading', () => {
     expect(reading.quantity).toEqual(rawData.quantity);
     expect(reading.month).toEqual(rawData.month);
     expect(reading.year).toEqual(rawData.year);
+  });
+
+  describe('calculateBaseCharge', () => {
+    it('should calculate the base charge for a given reading', () => {
+      const mockedBaseRate = 1;
+      const rawData = { customer: 'Ivan', quantity: 10, month: 5, year: 2017 };
+
+      jest.spyOn(TaxUtils, 'baseRate').mockReturnValue(mockedBaseRate);
+      const reading = new Reading(rawData);
+
+      expect(reading.calculateBaseCharge()).toEqual(mockedBaseRate * reading.quantity);
+    });
   });
 });
