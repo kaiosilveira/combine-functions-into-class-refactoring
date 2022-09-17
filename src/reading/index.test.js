@@ -22,7 +22,7 @@ describe('Reading', () => {
       jest.spyOn(TaxUtils, 'baseRate').mockReturnValue(mockedBaseRate);
       const reading = new Reading(rawData);
 
-      expect(reading.calculateBaseCharge()).toEqual(mockedBaseRate * reading.quantity);
+      expect(reading.baseCharge).toEqual(mockedBaseRate * reading.quantity);
     });
   });
 });

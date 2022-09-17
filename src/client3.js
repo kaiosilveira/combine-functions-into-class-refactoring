@@ -3,6 +3,6 @@ const { acquireReading } = require('./acquire-reading');
 
 const rawReading = acquireReading();
 const aReading = new Reading(rawReading);
-const basicChargeAmount = aReading.calculateBaseCharge();
+const basicChargeAmount = aReading.baseCharge;
 
 console.log(`basic charge amount is ${basicChargeAmount}`);
